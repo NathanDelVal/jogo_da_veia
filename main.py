@@ -26,6 +26,7 @@ class TicTacToe:
         self.switch_player()
 
     def check_winner(self):
+        self.counter += 1
         for x in range(len(self.labels)):
             global x_win, y_win, diag_win, rev_diag_win
             x_win = y_win = diag_win = rev_diag_win = True
@@ -44,6 +45,10 @@ class TicTacToe:
                 messagebox.showinfo("WINNER", f"{self.player.name} WINS!")
                 self.clear()
                 self.executar()
+        if self.counter == 9:
+            messagebox.showinfo("GAME OVER", "GAME TIED")
+            self.clear()
+            self.executar()
 
     def clear(self):
         for x in self.labels:
@@ -56,6 +61,7 @@ class TicTacToe:
         self.executar()
 
     def executar(self):
+        self.counter = 0
         self.player = player1
         self.labels = []
 
